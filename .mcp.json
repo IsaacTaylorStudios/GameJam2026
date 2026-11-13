@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"mcpServers":
 	{
 		"unreal-mcp":
@@ -8,3 +9,12 @@
 		}
 	}
 }
+=======
+  "mcpServers": {
+    "unreal-mcp": {
+      "type": "http",
+      "url": "http://127.0.0.1:8000/mcp"
+    }
+  }
+}
+>>>>>>> 8c918ac4e4b6209bc0aa30fdd4df91fd51bd1644
