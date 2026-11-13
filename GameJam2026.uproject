@@ -55,5 +55,8 @@
 			"Name": "EditorToolset",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"Windows"
 	]
 }
