@@ -32,8 +32,9 @@ First check whether the editor is open: `Get-Process UnrealEditor -ErrorAction S
 - All Toolsets turns on the Game Features plugin in the editor only. The editor-only `GameFeatureData` entry in `Config/DefaultGame.ini` silences its startup error. Don't replace it with the editor's "Add entry to PrimaryAssetTypesToScan?" fix: that version isn't editor-only, so packaged Development builds would hit an engine `ensure`.
 
 ## Project map
-- Startup map `/Game/LVL_Main`; default game mode `GM_Main` (both set in `Config/DefaultEngine.ini`).
-- `Content/GM_Main` (GameMode), `Content/GS_Main` (GameState), `Content/Player/BP_Player` (Character), `Content/Player/PC_Player` (PlayerController).
-- Input: Enhanced Input mapping context `Content/Inputs/IMC_Player` with actions `IA_Move`, `IA_LookAround`, `IA_Interact`, `IA_FlashLight`.
-- Interaction: interface `Content/Interfaces/BPI_Interactables`; base actor `Content/Interactables/_BP_Interactables_Master`; trace channel `Interactables` (`ECC_GameTraceChannel1`) and collision profile `Interactables`.
+- Levels: `/Game/LVL_Main` is the warehouse level and the startup map. `/Game/LVL_Soundstage` is the haunted movie-set soundstage, with the `CLUE_` actors. `Config/DefaultEngine.ini` sets the startup map and the default game mode, `GM_Main`.
+- `Content/GM_Main` (GameMode) spawns `Content/FirstPerson/Blueprints/BP_FirstPersonCharacter` with `BP_FirstPersonPlayerController`. `Content/GS_Main` is the GameState.
+- Input: Enhanced Input under `Content/Input`, with mapping contexts `IMC_Default` and `IMC_MouseLook`. The actions are in `Content/Input/Actions`: `IA_Move`, `IA_Look`, `IA_MouseLook`, `IA_Jump`, `IA_Interact`, `IA_Flashlight`.
+- Interaction: interface `Content/Interfaces/BPI_Interactables`, base actor `Content/BluePrints/Interactables/_BP_Interactables_Master` (for example `BP_Diary`), trace channel `Interactables` (`ECC_GameTraceChannel1`) and collision profile `Interactables`.
+- UI: `Content/UI/WBP_Player`. Project-made props live in `Content/Props`. Fab packs live in `Content/Fab` and at the `Content` root.
 - Name new assets with the existing prefixes (`BP_`, `BPI_`, `PC_`, `GM_`, `GS_`, `IA_`, `IMC_`, `MAT_`, `LVL_`). C++ classes use the usual Unreal prefixes (`A`, `U`, `F`, `E`, `I`).
